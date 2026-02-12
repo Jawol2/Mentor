@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankieta Audytu „Zero”</title>
+    <style>
+        /* Modernizacja CSS dla lepszego UI/UX - Ciemny Motyw z Złotymi Akcentami */
+        :root {
+            --primary-color: #ffd700; /* Gold for primary actions */
+            --primary-hover-color: #b8860b; /* Darker gold on hover */
+            --secondary-color: #03dac6; /* Teal for success/progress (can keep or change) */
+            --secondary-hover-color: #018786;
+            --background-color: #1a1a1a; /* Dark background */
+            --card-background: #2a2a2a; /* Slightly lighter dark for cards */
+            --text-color: #f0f0f0; /* Light text */
+            --light-text-color: #b0b0b0;
+            --border-color: #444444; /* Darker border */
+            --shadow-light: rgba(0, 0, 0, 0.4);
+            --shadow-medium: rgba(0, 0, 0, 0.6);
+            --info-background: #3a3a3a;
+            --info-border: #ffd700; /* Gold for info border */
+            --form-input-bg: #3a3a3a;
+            --form-input-border: #555555;
+            --placeholder-color: #999999;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 40px auto;
+            background-color: var(--card-background);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px var(--shadow-medium);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.4em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Space between text and icon */
+        }
+        h1 svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--primary-color);
+        }
+
+        h2 {
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-top: 35px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        p.app-goal {
+            background-color: var(--info-background);
+            border-left: 5px solid var(--info-border);
+            padding: 18px 20px;
+            margin-bottom: 35px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: var(--text-color);
+            border-radius: 6px;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            margin-bottom: 35px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color); /* Gold for progress bar */
+            width: 0%;
+            border-radius: 5px;
+            transition: width 0.4s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            font-size: 0.8em;
+            color: var(--background-color); /* Dark text on light progress bar */
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        
+        .section-instruction {
+            background-color: #282828; /* Slightly different dark for this note */
+            border-left: 4px solid var(--primary-color); /* Gold border for instruction */
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: var(--light-text-color);
+            border-radius: 4px;
+        }
+
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+            font-size: 1.05em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--form-input-border);
+            border-radius: 8px;
+            font-size: 1em;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--form-input-bg);
+            color: var(--text-color);
+        }
+
+        input[type="text"]::placeholder,
+        input[type="number"]::placeholder,
+        textarea::placeholder {
+            color: var(--placeholder-color);
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2); /* Gold shadow */
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .navigation-buttons button,
+        .export-buttons button {
+            flex: 1;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            white-space: nowrap; /* Prevent text wrapping on buttons */
+            color: var(--background-color); /* Dark text on buttons */
+        }
+
+        .navigation-buttons #prevBtn {
+            background-color: var(--light-text-color);
+            color: var(--background-color);
+        }
+
+        .navigation-buttons #prevBtn:hover:enabled {
+            background-color: #888888;
+            transform: translateY(-2px);
+        }
+
+        .navigation-buttons #nextBtn {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+
+        .navigation-buttons #nextBtn:hover:enabled {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
+        }
+        
+        .navigation-buttons #clearFormBtn {
+            background-color: #f44336; /* Red color for clear button */
+            color: white;
+        }
+
+        .navigation-buttons #clearFormBtn:hover:enabled {
+            background-color: #d32f2f; /* Darker red on hover */
+            transform: translateY(-2px);
+        }
+
+        .navigation-buttons #submitBtn {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            display: none; /* Managed by JS */
+        }
+
+        .navigation-buttons #submitBtn:hover:enabled {
+            background-color: var(--secondary-hover-color);
+            transform: translateY(-2px);
+        }
+
+        .navigation-buttons button:disabled {
+            background-color: #2c2c2c;
+            color: #555555;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .export-section {
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            display: none; /* Managed by JS */
+        }
+
+        .export-section h2 {
+            border-bottom: none;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .export-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .export-buttons button {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            flex: none; /* Don't grow to fill space */
+            min-width: 150px;
+        }
+
+        .export-buttons button#copyOutput {
+            background-color: var(--primary-color); /* Gold copy button */
+            color: var(--background-color);
+        }
+
+        .export-buttons button#copyOutput:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
+        }
+
+        .export-buttons button#downloadTxt {
+            background-color: #6a6a6a; /* Dark gray for text download */
+            color: white;
+        }
+
+        .export-buttons button#downloadTxt:hover {
+            background-color: #5a5a5a;
+            transform: translateY(-2px);
+        }
+
+        .export-buttons button#downloadJson {
+            background-color: #03dac6; /* Teal - info color */
+            color: var(--background-color);
+        }
+
+        .export-buttons button#downloadJson:hover {
+            background-color: #018786;
+            transform: translateY(-2px);
+        }
+
+        #outputDisplay {
+            width: 100%;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            background-color: #2c2c2c; /* Darker background for code display */
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-size: 0.9em;
+            line-height: 1.4;
+            color: var(--text-color);
+            box-sizing: border-box;
+            box-shadow: inset 0 1px 3px var(--shadow-light);
+        }
+
+
+        /* Checkbox styling */
+        .checkbox-group {
+            margin-top: 15px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color); /* Changes checkbox color to gold */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .container {
+                margin: 20px auto;
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .navigation-buttons, .export-buttons {
+                flex-direction: column;
+            }
+            .navigation-buttons button, .export-buttons button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .export-buttons {
+                align-items: center;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <svg class="icon-magnify" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            Ankieta audytu „zero” przed 90-dniowym procesem mentoringu
+            <svg class="icon-chart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 9h-2V7h2v2zm0-4h-2V3h2v2zm-2 11h2v-2h-2v2zm0 4h2v-2h-2v2zm-2-7h2v-2h-2v2zm-4 0h2v-2h-2v2zm0 4h2v-2h-2v2zM7 9h2V7H7v2zm0-4h2V3H7v2zm8 8h-2v-2h2v2zm4-4h-2V7h2v2zm-4-4h-2V3h2v2zm-8 8h2v-2H7v2zm0 4h2v-2H7v2zm4-4h2v-2h-2v2zm0 4h2v-2h-2v2zm-4-7h2v-2H7v2zm8 0h2v-2h-2v2zm-8 4h2v-2H7v2zM5 21h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2zm0-16h14v14H5V5z"/></svg>
+        </h1>
+        <p class="app-goal">
+            To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.
+        </p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">0%</div>
+        </div>
+
+        <form id="mentoringSurveyForm">
+            <!-- Section A: ANALIZA -->
+            <div class="section active" id="sectionA">
+                <p class="section-instruction">To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.</p>
+                <h2>A. ANALIZA</h2>
+                <div class="form-group">
+                    <label for="analysisQ1">1. Nad jakim tematem/problemem chcesz pracować przez 90 dni i dlaczego teraz?</label>
+                    <textarea id="analysisQ1" name="analysisQ1" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="analysisQ2">2. Jaki konkretny efekt biznesowy wyobrażasz sobie po 90 dniach (sprzedaż, liczba klientów/rozmów, przychód, pilot)?</label>
+                    <textarea id="analysisQ2" name="analysisQ2" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="analysisQ3">3. Jaką skalę sprzedaży wyobrażasz sobie po 90 dniach (liczby orientacyjne)?</label>
+                    <input type="text" id="analysisQ3" name="analysisQ3">
+                </div>
+                <div class="form-group">
+                    <label for="analysisQ4">4. Co już próbowałeś/aś i z jakim realnym efektem?</label>
+                    <textarea id="analysisQ4" name="analysisQ4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="analysisQ5">5. Jak widzisz konkurencję i czym dziś realnie się od niej różnisz?</label>
+                    <textarea id="analysisQ5" name="analysisQ5"></textarea>
+                </div>
+            </div>
+
+            <!-- Section B: PERSONA -->
+            <div class="section" id="sectionB">
+                <p class="section-instruction">To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.</p>
+                <h2>B. PERSONA</h2>
+                <h3>Profil persony (konkretna osoba):</h3>
+                <div class="form-group">
+                    <label for="personaB1">B1. Kim dokładnie jest ta osoba (rola, branża, poziom decyzyjności, kontekst pracy)?</label>
+                    <textarea id="personaB1" name="personaB1" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB2">B2. W jakim środowisku działa na co dzień (presja KPI/projektów/ludzi)?</label>
+                    <textarea id="personaB2" name="personaB2" required></textarea>
+                </div>
+
+                <h3>Cele i anty-cele:</h3>
+                <div class="form-group">
+                    <label for="personaB3">B3. Do czego ta osoba realnie dąży w najbliższym czasie (1–2 konkretne zmiany)?</label>
+                    <textarea id="personaB3" name="personaB3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB4">B4. Czego chce uniknąć za wszelką cenę (1–2 rzeczy, które ją szczególnie bolą)?</label>
+                    <textarea id="personaB4" name="personaB4" required></textarea>
+                </div>
+
+                <h3>Wizja sukcesu:</h3>
+                <div class="form-group">
+                    <label for="personaB5">B5. Jak ta osoba opisze swoją sytuację po skorzystaniu z Twojego rozwiązania (co się zmieni w decyzjach, pracy, spokoju)?</label>
+                    <textarea id="personaB5" name="personaB5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB6">B6. Po czym pozna, że „to zadziałało” w praktyce (konkretny sygnał zmiany)?</label>
+                    <textarea id="personaB6" name="personaB6" required></textarea>
+                </div>
+
+                <h3>Stan obecny:</h3>
+                <div class="form-group">
+                    <label for="personaB7">B7. Z jakimi zasobami dziś wchodzi (wiedza, doświadczenie, narzędzia)?</label>
+                    <textarea id="personaB7" name="personaB7" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB8">B8. Czego jej realnie brakuje, żeby ruszyć z miejsca?</label>
+                    <textarea id="personaB8" name="personaB8" required></textarea>
+                </div>
+
+                <h3>Punkty zapalne:</h3>
+                <div class="form-group">
+                    <label for="personaB9">B9. Co ją dziś najbardziej frustruje lub blokuje w tym obszarze?</label>
+                    <textarea id="personaB9" name="personaB9" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB10">B10. Jakie sytuacje ostatnio najbardziej ją „przepaliły” decyzyjnie lub energetycznie?</label>
+                    <textarea id="personaB10" name="personaB10" required></textarea>
+                </div>
+
+                <h3>Dotychczasowe działania:</h3>
+                <div class="form-group">
+                    <label for="personaB11">B11. Co już próbowała zrobić, żeby rozwiązać ten problem?</label>
+                    <textarea id="personaB11" name="personaB11" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB12">B12. Dlaczego to nie zadziałało trwale (konkretnie: czego zabrakło)?</label>
+                    <textarea id="personaB12" name="personaB12" required></textarea>
+                </div>
+
+                <h3>Wsparcie:</h3>
+                <div class="form-group">
+                    <label for="personaB13">B13. Jakiego rodzaju wsparcie realnie jej pomaga (1:1, proces, dane, narzędzia, struktura)?</label>
+                    <textarea id="personaB13" name="personaB13" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personaB14">B14. Jakiej formy wsparcia nie chce powtarzać?</label>
+                    <textarea id="personaB14" name="personaB14" required></textarea>
+                </div>
+            </div>
+
+            <!-- Section C: KOMPETENCJE TECHNICZNE (Placeholder) -->
+            <div class="section" id="sectionC">
+                <p class="section-instruction">To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.</p>
+                <h2>C. KOMPETENCJE TECHNICZNE</h2>
+                <div class="form-group">
+                    <label for="techQ1">C1. Jakie narzędzia i technologie wykorzystujesz obecnie w swojej pracy? (np. CRM, narzędzia do automatyzacji, platformy e-learningowe)</label>
+                    <textarea id="techQ1" name="techQ1"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="techQ2">C2. Jaki jest Twój poziom zaawansowania technicznego (np. podstawowy, średniozaawansowany, ekspert) i w jakich obszarach?</label>
+                    <textarea id="techQ2" name="techQ2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="techQ3">C3. Jakie masz doświadczenie z tworzeniem i zarządzaniem treściami cyfrowymi (np. wideo, podcasty, artykuły blogowe)?</label>
+                    <textarea id="techQ3" name="techQ3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="techQ4">C4. Czy masz doświadczenie w analizie danych i korzystaniu z narzędzi analitycznych (np. Google Analytics, Excel)?</label>
+                    <textarea id="techQ4" name="techQ4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="techQ5">C5. W jakich obszarach technicznych chciałbyś/chciałabyś się rozwinąć w ciągu najbliższych 90 dni?</label>
+                    <textarea id="techQ5" name="techQ5"></textarea>
+                </div>
+            </div>
+
+            <!-- Section D: STRATEGIA (Placeholder) -->
+            <div class="section" id="sectionD">
+                <p class="section-instruction">To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.</p>
+                <h2>D. STRATEGIA</h2>
+                <div class="form-group">
+                    <label for="strategyQ1">D1. Jaka jest Twoja obecna strategia biznesowa i główne cele na najbliższe 90 dni?</label>
+                    <textarea id="strategyQ1" name="strategyQ1"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="strategyQ2">D2. Jakie segmenty rynku lub grupy docelowe są dla Ciebie priorytetowe i dlaczego?</label>
+                    <textarea id="strategyQ2" name="strategyQ2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="strategyQ3">D3. Jakie kanały marketingowe wykorzystujesz i które z nich są najbardziej efektywne?</label>
+                    <textarea id="strategyQ3" name="strategyQ3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="strategyQ4">D4. Jakie masz plany dotyczące rozwoju produktu/usługi w najbliższym kwartale?</label>
+                    <textarea id="strategyQ4" name="strategyQ4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="strategyQ5">D5. Jak mierzysz sukces swojej strategii i jakie metryki są dla Ciebie kluczowe?</label>
+                    <textarea id="strategyQ5" name="strategyQ5"></textarea>
+                </div>
+            </div>
+
+            <!-- Section E: ONE MILLION DOLLAR MESSAGE -->
+            <div class="section" id="sectionE">
+                <p class="section-instruction">To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.</p>
+                <h2>E. ONE MILLION DOLLAR MESSAGE</h2>
+                <p><strong>Instrukcja dla klienta:</strong> Twoim celem nie jest napisać „idealny slogan”, tylko roboczo skondensować ofertę w jedno zdanie. To materiał do dalszej pracy.</p>
+
+                <h3>Formuła do uzupełnienia (3 warianty):</h3>
+                <div class="form-group">
+                    <label for="messageE1">E1. Wersja podstawowa:</label>
+                    <textarea id="messageE1" name="messageE1" placeholder="„Pomagam/uczę/rozwiązuję problemy [KOMU], dzięki [JAKIEJ METODZIE / NARZĘDZIU], dzięki czemu w [CZAS] osiągają [KONKRETNY REZULTAT].”"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="messageE2">E2. Wersja bardziej biznesowa (konkretne decyzje / rezultaty):</label>
+                    <textarea id="messageE2" name="messageE2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="messageE3">E3. Wersja bardziej emocjonalna (ból, napięcie, chaos → porządek/ulga):</label>
+                    <textarea id="messageE3" name="messageE3"></textarea>
+                </div>
+
+                <h3>Unikalność:</h3>
+                <div class="form-group">
+                    <label for="messageE4">E4. Czym realnie różnisz się od konkurencji w tym obszarze (1–2 konkretne różnice)?</label>
+                    <textarea id="messageE4" name="messageE4"></textarea>
+                </div>
+
+                <h3>Słowa do użycia (jeśli pasują do realnej oferty):</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="messageEKeywords" value="naukowe narzędzie"> „naukowe narzędzie”</label>
+                    <label><input type="checkbox" name="messageEKeywords" value="konkretne decyzje / rozstrzygnięcia"> „konkretne decyzje / rozstrzygnięcia”</label>
+                    <label><input type="checkbox" name="messageEKeywords" value="spójne z motywacją"> „spójne z motywacją”</label>
+                    <label><input type="checkbox" name="messageEKeywords" value="ukierunkowane na rezultaty, nie inspirację"> „ukierunkowane na rezultaty, nie inspirację”</label>
+                </div>
+                <div class="form-group">
+                    <label for="messageEKeywordsCustom">Jak te słowa przekładają się u Ciebie na realną wartość?</label>
+                    <textarea id="messageEKeywordsCustom" name="messageEKeywordsCustom"></textarea>
+                </div>
+
+                <h3>Test komunikatu:</h3>
+                <div class="form-group">
+                    <label for="messageE5">E5. Po czym klient pozna, że to nie są „ładne słowa”, tylko realna obietnica do sprawdzenia?</label>
+                    <textarea id="messageE5" name="messageE5"></textarea>
+                </div>
+            </div>
+
+            <!-- Section F: WDROŻENIE I DOSTĘPNOŚĆ 90 DNI (Placeholder) -->
+            <div class="section" id="sectionF">
+                <p class="section-instruction">To nie jest test wiedzy ani obietnica efektów. Ankieta służy wyłącznie dopasowaniu sposobu pracy mentora w 90 dni: ile edukacji, ile strategii, ile wdrożenia. Pytania o liczby i efekty opisują Twoje obecne wyobrażenie, nie gwarantowany wynik.</p>
+                <h2>F. WDROŻENIE I DOSTĘPNOŚĆ 90 DNI</h2>
+                <div class="form-group">
+                    <label for="implementationQ1">F1. Ile czasu jesteś w stanie poświęcić tygodniowo na pracę nad mentoringiem w ciągu najbliższych 90 dni?</label>
+                    <textarea id="implementationQ1" name="implementationQ1"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="implementationQ2">F2. Jakie zasoby (finansowe, ludzkie, czasowe) masz do dyspozycji, aby wdrożyć nowe działania?</label>
+                    <textarea id="implementationQ2" name="implementationQ2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="implementationQ3">F3. Jakie są Twoje największe obawy dotyczące wdrożenia zmian i osiągnięcia celów w ciągu 90 dni?</label>
+                    <textarea id="implementationQ3" name="implementationQ3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="implementationQ4">F4. Kto będzie odpowiedzialny za implementację poszczególnych działań (Ty, zespół, zewnętrzni specjaliści)?</label>
+                    <textarea id="implementationQ4" name="implementationQ4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="implementationQ5">F5. Jak będziesz mierzyć postępy i weryfikować efektywność wdrożonych rozwiązań?</label>
+                    <textarea id="implementationQ5" name="implementationQ5"></textarea>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" id="prevBtn" disabled>Poprzedni</button>
+                <button type="button" id="clearFormBtn" class="clear-button">Wyczyść Formularz</button>
+                <button type="button" id="nextBtn">Następny</button>
+                <button type="submit" id="submitBtn" style="display: none;">Zakończ i Eksportuj</button>
+            </div>
+        </form>
+
+        <div class="export-section" style="display: none;">
+            <h2>Podgląd i Eksport Danych</h2>
+            <div class="export-buttons">
+                <button id="copyOutput">Kopiuj do schowka</button>
+                <button id="downloadTxt">Pobierz TXT</button>
+                <button id="downloadJson">Pobierz JSON</button>
+            </div>
+            <pre id="outputDisplay"></pre>
+        </div>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.section');
+        const progressBar = document.getElementById('progressBar');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const clearFormBtn = document.getElementById('clearFormBtn');
+        const form = document.getElementById('mentoringSurveyForm');
+        const exportSection = document.querySelector('.export-section');
+        const outputDisplay = document.getElementById('outputDisplay');
+        const copyOutputBtn = document.getElementById('copyOutput');
+        const downloadTxtBtn = document.getElementById('downloadTxt');
+        const downloadJsonBtn = document.getElementById('downloadJson');
+
+        let currentStep = 0;
+        const totalSteps = sections.length;
+        const localStorageKey = 'mentoringSurveyData';
+
+        // --- Core Navigation & Progress ---
+        function updateProgressBar() {
+            const progress = (currentStep / totalSteps) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressBar.textContent = `${Math.round(progress)}%`;
+            if (currentStep === totalSteps) { // If all sections are completed
+                progressBar.textContent = '100%';
+            } else if (currentStep === 0 && totalSteps > 0) {
+                progressBar.textContent = '0%';
+            } else {
+                 progressBar.textContent = `${Math.round(progress)}%`;
+            }
+        }
+
+        function showSection(step) {
+            sections.forEach((section, index) => {
+                section.classList.remove('active');
+                if (index === step) {
+                    section.classList.add('active');
+                }
+            });
+            updateProgressBar();
+            updateNavigationButtons();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // saveToLocalStorage(); // Not saving on every section change to allow "fresh start"
+        }
+
+        function updateNavigationButtons() {
+            prevBtn.disabled = currentStep === 0;
+            nextBtn.style.display = currentStep === totalSteps - 1 ? 'none' : 'inline-block';
+            submitBtn.style.display = currentStep === totalSteps - 1 ? 'inline-block' : 'none';
+        }
+
+        // --- Validation ---
+        function validateCurrentSection() {
+            const currentActiveSection = sections[currentStep];
+            const inputsToValidate = currentActiveSection.querySelectorAll('textarea[required], input[required]:not([type="checkbox"])');
+            let allValid = true;
+
+            inputsToValidate.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = 'red';
+                    allValid = false;
+                } else {
+                    input.style.borderColor = ''; // Reset border
+                }
+            });
+
+            if (!allValid) {
+                alert('Proszę wypełnić wszystkie wymagane pola przed przejściem dalej.');
+            }
+            return allValid;
+        }
+
+        // --- LocalStorage ---
+        function saveToLocalStorage() {
+            const formData = {};
+            form.querySelectorAll('input, textarea').forEach(input => {
+                if (input.name) {
+                    if (input.type === 'checkbox') {
+                        if (!formData[input.name]) {
+                            formData[input.name] = [];
+                        }
+                        if (input.checked) {
+                            formData[input.name].push(input.value);
+                        }
+                    } else {
+                        formData[input.name] = input.value;
+                    }
+                }
+            });
+            localStorage.setItem(localStorageKey, JSON.stringify(formData));
+        }
+
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem(localStorageKey);
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                for (const name in formData) {
+                    const inputs = form.querySelectorAll(`[name="${name}"]`);
+                    inputs.forEach(input => {
+                        if (input.type === 'checkbox') {
+                            if (Array.isArray(formData[name])) {
+                                input.checked = formData[name].includes(input.value);
+                            }
+                        } else {
+                            input.value = formData[name];
+                        }
+                    });
+                }
+            }
+        }
+
+        function clearForm() {
+            form.reset(); // Resets all form fields
+            localStorage.removeItem(localStorageKey); // Clears localStorage
+            currentStep = 0; // Reset to first step
+            showSection(currentStep); // Show first section
+            exportSection.style.display = 'none'; // Hide export section
+            outputDisplay.textContent = ''; // Clear output display
+            alert('Formularz został wyczyszczony. Możesz rozpocząć nową ankietę.');
+        }
+
+        // --- Event Listeners ---
+        nextBtn.addEventListener('click', () => {
+            if (validateCurrentSection()) {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    showSection(currentStep);
+                }
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                showSection(currentStep);
+            }
+        });
+
+        clearFormBtn.addEventListener('click', clearForm);
+
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (validateCurrentSection()) {
+                exportSection.style.display = 'block';
+                generateOutput();
+                saveToLocalStorage(); // Final save after submission/export
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        });
+
+        // --- Export Functions ---
+        function collectFormData() {
+            const data = {};
+            sections.forEach(section => {
+                const sectionId = section.id;
+                data[sectionId] = {};
+
+                // Textareas and text inputs
+                section.querySelectorAll('textarea, input[type="text"], input[type="number"]').forEach(input => {
+                    if (input.name) {
+                        data[sectionId][input.name] = input.value;
+                    }
+                });
+
+                // Checkboxes for Section E
+                if (sectionId === 'sectionE') {
+                    const keywords = [];
+                    section.querySelectorAll('input[name="messageEKeywords"]:checked').forEach(checkbox => {
+                        keywords.push(checkbox.value);
+                    });
+                    if (keywords.length > 0) {
+                        data[sectionId]['messageEKeywords'] = keywords;
+                    } else {
+                        data[sectionId]['messageEKeywords'] = 'Brak wybranych słów kluczowych';
+                    }
+                }
+            });
+            return data;
+        }
+
+        function generateTxtOutput(formData) {
+            let txt = "--- Wyniki Ankiety Audytu „Zero” ---\n\n";
+            for (const sectionId in formData) {
+                const sectionElement = document.getElementById(sectionId);
+                const sectionTitle = sectionElement ? sectionElement.querySelector('h2').textContent : sectionId;
+                txt += `${sectionTitle}\n`;
+                txt += '---------------------------------\n';
+                for (const fieldName in formData[sectionId]) {
+                    const fieldValue = formData[sectionId][fieldName];
+                    const inputElement = form.querySelector(`[name="${fieldName}"]`);
+                    let labelText = fieldName;
+
+                    if (inputElement) {
+                        const associatedLabel = document.querySelector(`label[for="${inputElement.id}"]`);
+                        if (associatedLabel) {
+                            labelText = associatedLabel.textContent.trim();
+                            labelText = labelText.replace(/^[A-Z][0-9]+\.\s*/, ''); // Remove question number like "B1. "
+                        } else if (inputElement.type === 'checkbox' && inputElement.name === 'messageEKeywords') {
+                             // Handle the generic label for the checkbox group
+                            labelText = 'Słowa do użycia (checkboxes)';
+                        }
+                    } else if (fieldName === 'messageEKeywords' && Array.isArray(fieldValue)) {
+                        labelText = 'Wybrane słowa kluczowe';
+                    }
+
+
+                    if (Array.isArray(fieldValue)) {
+                        txt += `Pytanie: ${labelText}\n`;
+                        txt += `Odpowiedź: ${fieldValue.join(', ')}\n\n`;
+                    } else if (fieldValue) {
+                        txt += `Pytanie: ${labelText}\n`;
+                        txt += `Odpowiedź: ${fieldValue}\n\n`;
+                    }
+                }
+                txt += '\n';
+            }
+            return txt;
+        }
+
+
+        function generateOutput() {
+            const formData = collectFormData();
+            const jsonOutput = JSON.stringify(formData, null, 2);
+            const txtOutput = generateTxtOutput(formData);
+
+            outputDisplay.textContent = `JSON:\n${jsonOutput}\n\nTXT:\n${txtOutput}`;
+            outputDisplay.setAttribute('data-json', jsonOutput); // Store JSON for download
+            outputDisplay.setAttribute('data-txt', txtOutput);   // Store TXT for download
+        }
+
+        copyOutputBtn.addEventListener('click', () => {
+            const textToCopy = outputDisplay.textContent;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('Wyniki ankiety skopiowano do schowka!');
+            }).catch(err => {
+                console.error('Błąd kopiowania: ', err);
+                alert('Nie udało się skopiować wyników do schowka. Spróbuj skopiować ręcznie.');
+            });
+        });
+
+        function downloadFile(filename, content, contentType) {
+            const element = document.createElement('a');
+            element.setAttribute('href', `data:${contentType};charset=utf-8,${encodeURIComponent(content)}`);
+            element.setAttribute('download', filename);
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        downloadTxtBtn.addEventListener('click', () => {
+            const txtContent = outputDisplay.getAttribute('data-txt');
+            downloadFile('ankieta_audytu.txt', txtContent, 'text/plain');
+        });
+
+        downloadJsonBtn.addEventListener('click', () => {
+            const jsonContent = outputDisplay.getAttribute('data-json');
+            downloadFile('ankieta_audytu.json', jsonContent, 'application/json');
+        });
+
+
+        // --- Initial setup ---
+        // loadFromLocalStorage(); // Removed this call to ensure fresh form on reload
+        showSection(currentStep); // Display the first section
+    </script>
+</body>
+</html>
