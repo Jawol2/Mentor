@@ -624,15 +624,10 @@
             </div>
         </form>
 
-        <div class="export-section" style="display: none;">
-            <h2>Podgląd i Eksport Danych</h2>
-            <div class="export-buttons">
-                <button id="copyOutput">Kopiuj do schowka</button>
-                <button id="downloadTxt">Pobierz TXT</button>
-                <button id="downloadJson">Pobierz JSON</button>
             </div>
-            <pre id="outputDisplay"></pre>
-        </div>
+        </form>
+
+        <div id="submissionMessage" style="display: none; margin-top: 20px; padding: 15px; border-radius: 8px; font-weight: bold; text-align: center;"></div>
     </div>
 
     <script>
@@ -643,11 +638,10 @@
         const submitBtn = document.getElementById('submitBtn');
         const clearFormBtn = document.getElementById('clearFormBtn');
         const form = document.getElementById('mentoringSurveyForm');
-        const exportSection = document.querySelector('.export-section');
-        const outputDisplay = document.getElementById('outputDisplay');
-        const copyOutputBtn = document.getElementById('copyOutput');
-        const downloadTxtBtn = document.getElementById('downloadTxt');
-        const downloadJsonBtn = document.getElementById('downloadJson');
+        const submissionMessageDiv = document.getElementById('submissionMessage');
+        
+        // !!! WAŻNE: ZASTĄP TEN URL ADRESEM URL WDROŻONEGO SKRYPTU GOOGLE APPS SCRIPT !!!
+        const GOOGLE_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL_HERE'; 
 
         let currentStep = 0;
         const totalSteps = sections.length;
@@ -707,7 +701,7 @@
             return allValid;
         }
 
-        // --- LocalStorage ---
+        // --- LocalStorage (still useful for development, can be fully removed later if desired) ---
         function saveToLocalStorage() {
             const formData = {};
             form.querySelectorAll('input, textarea').forEach(input => {
@@ -727,32 +721,13 @@
             localStorage.setItem(localStorageKey, JSON.stringify(formData));
         }
 
-        function loadFromLocalStorage() {
-            const savedData = localStorage.getItem(localStorageKey);
-            if (savedData) {
-                const formData = JSON.parse(savedData);
-                for (const name in formData) {
-                    const inputs = form.querySelectorAll(`[name="${name}"]`);
-                    inputs.forEach(input => {
-                        if (input.type === 'checkbox') {
-                            if (Array.isArray(formData[name])) {
-                                input.checked = formData[name].includes(input.value);
-                            }
-                        } else {
-                            input.value = formData[name];
-                        }
-                    });
-                }
-            }
-        }
-
         function clearForm() {
             form.reset(); // Resets all form fields
             localStorage.removeItem(localStorageKey); // Clears localStorage
             currentStep = 0; // Reset to first step
             showSection(currentStep); // Show first section
-            exportSection.style.display = 'none'; // Hide export section
-            outputDisplay.textContent = ''; // Clear output display
+            submissionMessageDiv.style.display = 'none'; // Hide submission message
+            submissionMessageDiv.textContent = '';
             alert('Formularz został wyczyszczony. Możesz rozpocząć nową ankietę.');
         }
 
@@ -775,18 +750,58 @@
 
         clearFormBtn.addEventListener('click', clearForm);
 
-
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (validateCurrentSection()) {
-                exportSection.style.display = 'block';
-                generateOutput();
-                saveToLocalStorage(); // Final save after submission/export
-                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            if (!validateCurrentSection()) {
+                return;
+            }
+
+            if (GOOGLE_APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL_HERE') {
+                alert('Błąd konfiguracji: Proszę podać prawidłowy adres URL wdrożonego skryptu Google Apps Script w pliku index.html.');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Wysyłanie...';
+            submissionMessageDiv.style.display = 'block';
+            submissionMessageDiv.style.backgroundColor = '#ffc107'; // Warning yellow
+            submissionMessageDiv.style.color = '#333';
+            submissionMessageDiv.textContent = 'Trwa wysyłanie danych...';
+
+            const formData = collectFormData(); // Use existing function to collect data
+
+            try {
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Apps Script as it returns a blank response on success
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: JSON.stringify(formData), // Send as JSON string
+                });
+
+                // Since mode is 'no-cors', response.ok will always be true and response.status always 0
+                // We assume success for now, as Apps Script handles the actual processing
+                // For a more robust check, Apps Script should redirect to a success page or return a JSONP response.
+                // For this scenario, simply assuming success is sufficient as we can't read the response directly.
+
+                submissionMessageDiv.style.backgroundColor = '#28a745'; // Success green
+                submissionMessageDiv.style.color = 'white';
+                submissionMessageDiv.textContent = 'Ankieta została wysłana pomyślnie! Dziękujemy.';
+                clearForm(); // Clear the form after successful submission
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+            } catch (error) {
+                console.error('Błąd podczas wysyłania danych:', error);
+                submissionMessageDiv.style.backgroundColor = '#dc3545'; // Error red
+                submissionMessageDiv.style.color = 'white';
+                submissionMessageDiv.textContent = 'Wystąpił błąd podczas wysyłania ankiety. Proszę spróbować ponownie lub skontaktować się z mentorem.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Zakończ i Eksportuj'; // Revert text
             }
         });
 
-        // --- Export Functions ---
+        // --- Export Functions (now repurposed for sending data) ---
         function collectFormData() {
             const data = {};
             sections.forEach(section => {
@@ -815,86 +830,6 @@
             });
             return data;
         }
-
-        function generateTxtOutput(formData) {
-            let txt = "--- Wyniki Ankiety Audytu „Zero” ---\n\n";
-            for (const sectionId in formData) {
-                const sectionElement = document.getElementById(sectionId);
-                const sectionTitle = sectionElement ? sectionElement.querySelector('h2').textContent : sectionId;
-                txt += `${sectionTitle}\n`;
-                txt += '---------------------------------\n';
-                for (const fieldName in formData[sectionId]) {
-                    const fieldValue = formData[sectionId][fieldName];
-                    const inputElement = form.querySelector(`[name="${fieldName}"]`);
-                    let labelText = fieldName;
-
-                    if (inputElement) {
-                        const associatedLabel = document.querySelector(`label[for="${inputElement.id}"]`);
-                        if (associatedLabel) {
-                            labelText = associatedLabel.textContent.trim();
-                            labelText = labelText.replace(/^[A-Z][0-9]+\.\s*/, ''); // Remove question number like "B1. "
-                        } else if (inputElement.type === 'checkbox' && inputElement.name === 'messageEKeywords') {
-                             // Handle the generic label for the checkbox group
-                            labelText = 'Słowa do użycia (checkboxes)';
-                        }
-                    } else if (fieldName === 'messageEKeywords' && Array.isArray(fieldValue)) {
-                        labelText = 'Wybrane słowa kluczowe';
-                    }
-
-
-                    if (Array.isArray(fieldValue)) {
-                        txt += `Pytanie: ${labelText}\n`;
-                        txt += `Odpowiedź: ${fieldValue.join(', ')}\n\n`;
-                    } else if (fieldValue) {
-                        txt += `Pytanie: ${labelText}\n`;
-                        txt += `Odpowiedź: ${fieldValue}\n\n`;
-                    }
-                }
-                txt += '\n';
-            }
-            return txt;
-        }
-
-
-        function generateOutput() {
-            const formData = collectFormData();
-            const jsonOutput = JSON.stringify(formData, null, 2);
-            const txtOutput = generateTxtOutput(formData);
-
-            outputDisplay.textContent = `JSON:\n${jsonOutput}\n\nTXT:\n${txtOutput}`;
-            outputDisplay.setAttribute('data-json', jsonOutput); // Store JSON for download
-            outputDisplay.setAttribute('data-txt', txtOutput);   // Store TXT for download
-        }
-
-        copyOutputBtn.addEventListener('click', () => {
-            const textToCopy = outputDisplay.textContent;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                alert('Wyniki ankiety skopiowano do schowka!');
-            }).catch(err => {
-                console.error('Błąd kopiowania: ', err);
-                alert('Nie udało się skopiować wyników do schowka. Spróbuj skopiować ręcznie.');
-            });
-        });
-
-        function downloadFile(filename, content, contentType) {
-            const element = document.createElement('a');
-            element.setAttribute('href', `data:${contentType};charset=utf-8,${encodeURIComponent(content)}`);
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
-        }
-
-        downloadTxtBtn.addEventListener('click', () => {
-            const txtContent = outputDisplay.getAttribute('data-txt');
-            downloadFile('ankieta_audytu.txt', txtContent, 'text/plain');
-        });
-
-        downloadJsonBtn.addEventListener('click', () => {
-            const jsonContent = outputDisplay.getAttribute('data-json');
-            downloadFile('ankieta_audytu.json', jsonContent, 'application/json');
-        });
 
 
         // --- Initial setup ---
