@@ -80,7 +80,19 @@ Jeśli użytkownik nie sprecyzował, zapytaj:
 
 ### Tryb A — Brainstorm
 
-Zadaj 4 pytania **jedno po drugim**. Czekaj na odpowiedź przed kolejnym.
+Zanim zadasz jakiekolwiek pytania, najpierw zapytaj o temat i materiały źródłowe. Czekaj na każdą odpowiedź przed przejściem dalej.
+
+**Pytanie 0a — Temat:**
+> „O czym ma być ta karuzela? Podaj temat, tezę lub hasło — nawet jedno zdanie wystarczy."
+
+**Pytanie 0b — Materiały źródłowe:**
+> „Masz jakieś notatki, linki, artykuły, fragmenty tekstu, wyniki badań lub inne materiały które chcesz żebym wykorzystał? Jeśli tak — wklej je tutaj. Jeśli nie — wpisz 'brak' i przejdziemy dalej."
+
+Jeśli user wklei materiały — przeczytaj je uważnie przed przejściem do pytań 1–4. Będą podstawą treści slajdów.
+
+---
+
+Następnie zadaj 4 pytania **jedno po drugim**. Czekaj na odpowiedź przed kolejnym.
 
 **Pytanie 1:** „Jak chcesz, żeby odbiorca postrzegał Cię po przeczytaniu tej karuzeli? (ekspert, praktyk, insider, krytyk systemu…)"
 
@@ -90,7 +102,7 @@ Zadaj 4 pytania **jedno po drugim**. Czekaj na odpowiedź przed kolejnym.
 
 **Pytanie 4:** „Skąd pochodzi ten content? Własne doświadczenie, obserwacja rynku, case study, dane?"
 
-Po zebraniu odpowiedzi:
+Po zebraniu wszystkich odpowiedzi (0a, 0b, 1–4):
 1. Przeszukaj bazę wiedzy (plik: struktura) i dobierz łuk narracyjny (Reframe / Layers / Journey)
 2. Powiedz użytkownikowi: „Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"
 3. Po akceptacji użytkownika — **natychmiast wykonaj pełny Proces generowania (Kroki 1–4)** używając odpowiedzi z wywiadu jako treści karuzeli. Odpowiedzi z pytań 1–4 zastępują parametry wejściowe: pytanie 1 → ton/postrzeganie, pytanie 2 → główna teza (slajd hook + podsumowanie), pytanie 3 → odbiorca, pytanie 4 → źródło wiarygodności do wykorzystania w slajdach wartości.

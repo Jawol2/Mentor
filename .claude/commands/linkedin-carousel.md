@@ -16,7 +16,19 @@ Jeśli użytkownik nie sprecyzował trybu, zapytaj:
 
 ### Tryb A — Brainstorm (`/linkedin-carousel brainstorm`)
 
-Przeprowadź użytkownika przez 4 pytania **jedno po drugim** (nie wszystkie naraz). Czekaj na odpowiedź przed przejściem do następnego.
+Zanim zadasz jakiekolwiek pytania, najpierw zapytaj o temat i materiały. Czekaj na każdą odpowiedź.
+
+**Pytanie 0a — Temat:**
+> „O czym ma być ta karuzela? Podaj temat, tezę lub hasło — nawet jedno zdanie wystarczy."
+
+**Pytanie 0b — Materiały źródłowe:**
+> „Masz jakieś notatki, linki, artykuły lub inne materiały do wykorzystania? Wklej je tutaj albo napisz 'brak'."
+
+Jeśli user wkleił materiały — przeczytaj je przed przejściem do pytań 1–4. Będą podstawą treści slajdów.
+
+---
+
+Następnie przeprowadź przez 4 pytania **jedno po drugim**. Czekaj na odpowiedź przed przejściem do następnego.
 
 **Pytanie 1 — Postrzeganie:**
 > „Jak chcesz, żeby odbiorca postrzegał Cię po przeczytaniu tej karuzeli? (ekspert, praktyk, insider, krytyk systemu…)"
@@ -30,7 +42,7 @@ Przeprowadź użytkownika przez 4 pytania **jedno po drugim** (nie wszystkie nar
 **Pytanie 4 — Źródło:**
 > „Skąd pochodzi ten content? Własne doświadczenie, obserwacja rynku, case study, dane?"
 
-Po zebraniu 4 odpowiedzi:
+Po zebraniu wszystkich odpowiedzi (0a, 0b, 1–4):
 1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
 2. Pokaż użytkownikowi: *„Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"*
 3. Po akceptacji użytkownika — **natychmiast wykonaj pełny Proces (Kroki 1–4)** używając odpowiedzi z wywiadu jako treści. Pytanie 2 → teza/hook, pytanie 3 → odbiorca, pytanie 4 → źródło wiarygodności w slajdach wartości.
