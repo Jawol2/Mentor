@@ -16,7 +16,11 @@ Jeśli użytkownik nie sprecyzował trybu, zapytaj:
 
 ### Tryb A — Brainstorm (`/linkedin-carousel brainstorm`)
 
-Zanim zadasz jakiekolwiek pytania, najpierw zapytaj o temat i materiały. Czekaj na każdą odpowiedź.
+**ZASADA NADRZĘDNA:** Pytania 1–4 są obowiązkowe i nie można ich pominąć — nawet jeśli user wkleił obszerne materiały lub gotowy tekst. Materiały = źródło treści. Pytania 1–4 = decyzje narracyjne i charakterologiczne. Jedno nie zastępuje drugiego.
+
+Jeśli user wkleił treść zanim wybrał tryb — odpowiedz: „Widzę że masz materiały — zachowam je. Zaczynamy brainstorm." i zadaj pytanie 0a. Nie generuj.
+
+Zadaj pytania w tej kolejności, **jedno po jednym**. Czekaj na odpowiedź. Nie zadawaj dwóch pytań naraz.
 
 **Pytanie 0a — Temat:**
 > „O czym ma być ta karuzela? Podaj temat, tezę lub hasło — nawet jedno zdanie wystarczy."
@@ -24,25 +28,36 @@ Zanim zadasz jakiekolwiek pytania, najpierw zapytaj o temat i materiały. Czekaj
 **Pytanie 0b — Materiały źródłowe:**
 > „Masz jakieś notatki, linki, artykuły lub inne materiały do wykorzystania? Wklej je tutaj albo napisz 'brak'."
 
-Jeśli user wkleił materiały — przeczytaj je przed przejściem do pytań 1–4. Będą podstawą treści slajdów.
-
----
-
-Następnie przeprowadź przez 4 pytania **jedno po drugim**. Czekaj na odpowiedź przed przejściem do następnego.
+Jeśli user wkleił materiały — przeczytaj je. Będą podstawą treści slajdów.
 
 **Pytanie 1 — Postrzeganie:**
-> „Jak chcesz, żeby odbiorca postrzegał Cię po przeczytaniu tej karuzeli? (ekspert, praktyk, insider, krytyk systemu…)"
+> „Jak chcesz, żeby odbiorca postrzegał Cię po przeczytaniu tej karuzeli? (ekspert, praktyk, insider, mentor, strateg…)"
 
 **Pytanie 2 — Teza:**
-> „Co jest Twoim głównym przekonaniem lub insightem na ten temat? Jedno zdanie, które chciałbyś żeby ludzie zapamiętali."
+> „Co jest Twoim głównym przekonaniem lub insightem? Jedno zdanie które chciałbyś żeby ludzie zapamiętali."
 
 **Pytanie 3 — Odbiorca:**
-> „Kim jest Twój czytelnik i gdzie teraz jest? (np. 'founder, który już próbował X i mu nie wyszło')"
+> „Kim jest Twój czytelnik i gdzie teraz jest? Im konkretniej, tym lepiej."
 
-**Pytanie 4 — Źródło:**
-> „Skąd pochodzi ten content? Własne doświadczenie, obserwacja rynku, case study, dane?"
+**Pytanie 4 — Źródło wiarygodności:**
+> „Skąd pochodzi ten content? Własne doświadczenie, model który wypracowałeś, case study, dane?"
 
-Po zebraniu wszystkich odpowiedzi (0a, 0b, 1–4):
+Po zebraniu 0a, 0b, 1–4:
+1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
+2. Pokaż propozycję: „Proponuję łuk **[nazwa]**, bo [uzasadnienie]. Pasuje?"
+3. Po akceptacji — zadaj pytanie brandingowe przed generowaniem:
+
+**Pytanie brandingowe:**
+> „Ostatni krok — dane do brandingu na slajdach:
+> - Imię i nazwisko
+> - Strona www (opcjonalnie)
+> - LinkedIn lub social media (opcjonalnie)
+> - Kolor marki w hex (domyślnie #0A66C2)
+> - Zdjęcie profilowe — URL lub plik (opcjonalnie)"
+
+Po odpowiedzi brandingowej — **natychmiast wykonaj pełny Proces (Kroki 1–4)**. Nie pytaj o nic więcej.
+
+Po zebraniu wszystkich odpowiedzi (0a, 0b, 1–4 + branding):
 1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
 2. Pokaż użytkownikowi: *„Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"*
 3. Po akceptacji użytkownika — **natychmiast wykonaj pełny Proces (Kroki 1–4)** używając odpowiedzi z wywiadu jako treści. Pytanie 2 → teza/hook, pytanie 3 → odbiorca, pytanie 4 → źródło wiarygodności w slajdach wartości.
