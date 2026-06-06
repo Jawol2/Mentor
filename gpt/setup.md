@@ -26,15 +26,16 @@ W polu **Instructions** wklej całą zawartość pliku `gpt/system-prompt.md`.
 
 ### 2. Baza wiedzy (Knowledge)
 
-W sekcji **Knowledge** wgraj 3 pliki:
+W sekcji **Knowledge** wgraj **4 pliki**:
 
-| Plik do wgrania | Skąd |
-|---|---|
-| `hooki.md` | `references/hooki.md` |
-| `struktura.md` | `references/struktura.md` |
-| `render.md` | `references/render.md` |
+| Plik do wgrania | Skąd | Rola |
+|---|---|---|
+| `instrukcje.md` | `gpt/knowledge/instrukcje.md` | **Plik sterujący** — pełne instrukcje działania |
+| `hooki.md` | `references/hooki.md` | 6 formuł hooków z matrycą |
+| `struktura.md` | `references/struktura.md` | Szablony slajdów i łuki narracyjne |
+| `render.md` | `references/render.md` | Szablon HTML→PDF |
 
-Możesz je wgrać pod oryginalnymi nazwami — GPT będzie je przeszukiwał semantycznie.
+> **Dlaczego taki podział?** System prompt GPT ma limit znaków i jest skanowany pod kątem zasad (brand names, real persons). Plik `instrukcje.md` w Knowledge omija oba problemy — trafia do bazy wiedzy, nie do pola Instructions.
 
 ### 3. Capabilities
 
