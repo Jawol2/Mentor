@@ -160,6 +160,102 @@ visual_hint: zdjęcie profilowe lub avatar, tło marki
 
 ---
 
+## Łuki narracyjne
+
+Łuk narracyjny to szkielet logiczny całej karuzeli — decyduje w jakiej kolejności podajesz informacje i jak budujesz napięcie. Wybierz jeden zanim przystąpisz do pisania slajdów.
+
+### Matryca wyboru łuku
+
+| Sytuacja | Łuk |
+|---|---|
+| Chcesz obalić powszechne przekonanie / pokazać inną perspektywę | **Reframe** |
+| Masz wiedzę ekspercką którą chcesz przekazać warstwami | **Layers** |
+| Masz historię osobistą lub case study z transformacją | **Journey** |
+
+---
+
+### Łuk 1 — Reframe (Nowa rama)
+
+**Cel:** Zmienić sposób myślenia czytelnika o znanych mu rzeczach.
+**Sygnatura:** „Myślisz że X. W rzeczywistości Y."
+
+Dopasowane hooki: Kontra, Błąd, Sekret.
+
+| Nr | Typ | Zawartość |
+|---|---|---|
+| 1 | Hook | Zakwestionuj dominujące założenie (1 zdanie) |
+| 2 | Stare przekonanie | Pokaż jak większość podchodzi do tematu (empatia, bez ataku) |
+| 3 | Przełom | Nazwij moment/insght który zmienił perspektywę |
+| 4 | Nowa rama — teza | Twoje główne twierdzenie w 1 zdaniu |
+| 5–8 | Dowody × 4 | Każdy slajd = jeden dowód / argument / przykład potwierdzający tezę |
+| 9 | Punchline | Efekt uboczny nowej ramy — co staje się możliwe gdy ją przyjmiesz |
+| 10 | CTA | Jedno działanie wynikające z nowej perspektywy |
+
+**Wzorzec nagłówków w łuku Reframe:**
+- Slajd 2: „Większość [odbiorców] wierzy, że..."
+- Slajd 3: „To przekonanie kosztuje Cię..."
+- Slajd 4: „Prawda jest inna:"
+- Slajdy 5–8: Twierdzenie → dowód (jedno per slajd)
+- Slajd 9: „Gdy to zmienisz, zaczyna się..."
+
+---
+
+### Łuk 2 — Layers (Warstwy wiedzy)
+
+**Cel:** Dostarczyć pogłębioną wiedzę ekspercką w logicznej sekwencji — każda warstwa buduje na poprzedniej.
+**Sygnatura:** „Oto jak to naprawdę działa — poziom po poziomie."
+
+Dopasowane hooki: Liczba, Sekret, Pytanie retoryczne.
+
+| Nr | Typ | Zawartość |
+|---|---|---|
+| 1 | Hook | Liczba warstw lub obietnica głębokości |
+| 2 | Stan aktualny | Gdzie jest teraz większość — poziom 0 |
+| 3 | Luka | Co oddziela poziom 0 od ekspertów (nazwij konkretnie) |
+| 4 | Teza | Twoja zasada organizująca całą wiedzę |
+| 5 | Warstwa 1 | Fundament — najprostsza zasada, bez której nic nie działa |
+| 6 | Warstwa 2 | Mechanizm — jak to działa w praktyce |
+| 7 | Warstwa 3 | Niuans — co rozróżnia dobre od świetnego |
+| 8 | Warstwa 4 | Mistrzostwo — co robią topowi gracze inaczej |
+| 9 | Efekt złożony | Co się dzieje gdy opanujesz wszystkie warstwy razem |
+| 10 | CTA | Pierwszy krok do przejścia z poziomu 0 na 1 |
+
+**Wzorzec nagłówków w łuku Layers:**
+- Slajd 2: „Poziom 0: [opis stanu przeciętnego]"
+- Slajd 5–8: „Warstwa [N]: [nazwa zasady]"
+- Slajd 9: „Gdy wszystkie warstwy działają razem:"
+
+---
+
+### Łuk 3 — Journey (Podróż / Transformacja)
+
+**Cel:** Pokazać zmianę — swoją lub cudzą — jako dowód że coś jest możliwe.
+**Sygnatura:** „Byłem tam gdzie Ty. Oto co zmieniłem i jak."
+
+Dopasowane hooki: Transformacja (Before/After), Błąd, Pytanie.
+
+| Nr | Typ | Zawartość |
+|---|---|---|
+| 1 | Hook | Kontrast: stan przed vs po (liczby jeśli możliwe) |
+| 2 | Punkt startowy | Gdzie byłeś — konkretne szczegóły, emocje, błędy |
+| 3 | Moment przełomu | Co się stało / co zobaczyłeś inaczej |
+| 4 | Nowe podejście | Główna zmiana którą wprowadziłeś |
+| 5 | Krok 1 | Pierwsza konkretna zmiana działania |
+| 6 | Krok 2 | Druga zmiana |
+| 7 | Krok 3 | Trzecia zmiana |
+| 8 | Nieoczekiwany efekt | Co zaskoczył Cię po drodze (wiarygodność) |
+| 9 | Stan obecny | Gdzie jesteś teraz — konkretnie, bez przesady |
+| 10 | CTA | Jak czytelnik może zacząć ten sam proces |
+
+**Wzorzec nagłówków w łuku Journey:**
+- Slajd 2: „[Rok/Miesiąc] temu:"
+- Slajd 3: „Moment który zmienił wszystko:"
+- Slajdy 5–7: „Krok [N]: [nazwa działania]"
+- Slajd 8: „Czego się nie spodziewałem:"
+- Slajd 9: „Dziś:"
+
+---
+
 ## Zasady wizualne (dla renderera)
 
 - Format slajdu: **1080 × 1080 px** (kwadrat, domyślny LinkedIn)

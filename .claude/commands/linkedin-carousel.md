@@ -6,6 +6,41 @@ Tworzysz profesjonalne karuzele LinkedIn w formacie HTML→PDF. Postępuj ściś
 
 Uruchamia się gdy użytkownik pyta o karuzelę LinkedIn, prosi o „slajdy do LinkedIn", używa `/linkedin-carousel` lub podaje temat z dopiskiem „zrób karuzelę".
 
+---
+
+## Tryby pracy
+
+Jeśli użytkownik nie sprecyzował trybu, zapytaj:
+
+> „Chcesz zacząć od **brainstormu** (4 pytania → razem budujemy narrację) czy od razu **generować** (podaj temat, działam)?"
+
+### Tryb A — Brainstorm (`/linkedin-carousel brainstorm`)
+
+Przeprowadź użytkownika przez 4 pytania **jedno po drugim** (nie wszystkie naraz). Czekaj na odpowiedź przed przejściem do następnego.
+
+**Pytanie 1 — Postrzeganie:**
+> „Jak chcesz, żeby odbiorca postrzegał Cię po przeczytaniu tej karuzeli? (ekspert, praktyk, insider, krytyk systemu…)"
+
+**Pytanie 2 — Teza:**
+> „Co jest Twoim głównym przekonaniem lub insightem na ten temat? Jedno zdanie, które chciałbyś żeby ludzie zapamiętali."
+
+**Pytanie 3 — Odbiorca:**
+> „Kim jest Twój czytelnik i gdzie teraz jest? (np. 'founder, który już próbował X i mu nie wyszło')"
+
+**Pytanie 4 — Źródło:**
+> „Skąd pochodzi ten content? Własne doświadczenie, obserwacja rynku, case study, dane?"
+
+Po zebraniu 4 odpowiedzi:
+1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
+2. Pokaż użytkownikowi: *„Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"*
+3. Po akceptacji przejdź do Kroku 2 (Specyfikacja JSON)
+
+### Tryb B — Generuj (`/linkedin-carousel generate` lub domyślny)
+
+Przejdź od razu do sekcji **Dane wejściowe** i **Procesu 4-krokowego**.
+
+---
+
 ## Dane wejściowe
 
 Zbierz (lub wypytaj użytkownika) przed startem:
@@ -29,7 +64,8 @@ Jeśli `temat` nie jest podany, zapytaj zanim przejdziesz dalej.
 
 1. Zidentyfikuj **główną wartość** (co czytelnik wyniesie z karuzeli).
 2. Wybierz **typ hooka** ze `references/hooki.md` najlepszy dla tematu.
-3. Ustal **strukturę slajdów** według `references/struktura.md`.
+3. Wybierz **łuk narracyjny** ze `references/struktura.md` (Reframe / Layers / Journey) lub strukturę domyślną.
+4. Ustal **układ slajdów** zgodny z wybranym łukiem.
 
 ### Krok 2 — Specyfikacja slajdów (JSON)
 
