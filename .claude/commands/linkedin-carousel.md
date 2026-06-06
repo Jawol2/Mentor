@@ -126,13 +126,62 @@ Liczba slajdów: [N] | Format: PDF wielostronicowy
 
 ---
 
-## Zasady jakości
+## Zasady jakości treści
 
 - Każdy slajd musi dać się **przeczytać w 3 sekundy** (skan wzroku)
 - Hook musi zawierać **liczbę, kontrast lub niespodziewane sformułowanie**
 - CTA musi być **jeden i konkretny** (nie „obserwuj i udostępnij i komentuj")
 - Slajd z wartością — **konkluzja zawsze na końcu**, nie na początku
 - Branding: imię/logo autora dyskretnie na każdym slajdzie (nie tylko ostatnim)
+
+---
+
+## Kontrola jakości i walidacja artefaktu
+
+Ta sekcja jest **obowiązkowa**. Wykonaj ją przed każdym oddaniem pliku użytkownikowi.
+
+### Zakaz wersji roboczych
+
+Nigdy nie generuj i nie pokazuj:
+- placeholderów (`[tu wstaw tekst]`, `lorem ipsum`)
+- HTML z niepełną liczbą slajdów
+- „wersji demo", „szkicu", „uproszczonej wersji"
+
+Jeśli nie możesz wygenerować finalnego produktu — powiedz o tym wprost. Nie pokazuj wersji pośredniej jako wyniku.
+
+### Checklist przed oddaniem pliku
+
+Po wygenerowaniu HTML wykonaj poniższą walidację. Każdy punkt musi być spełniony — jeśli nie jest, popraw i wygeneruj ponownie.
+
+```
+WALIDACJA ARTEFAKTU
+─────────────────────────────────────────────────
+□ Liczba <div class="slide"> w HTML = liczba_slajdow z wymagań
+□ Slajd 1 (hook) istnieje fizycznie w pliku
+□ Ostatni slajd (CTA) istnieje fizycznie w pliku
+□ Każdy slajd ma nagłówek (.headline) — żaden nie jest pusty
+□ CSS zawiera --brand z kolorem marki użytkownika
+□ Branding autora (.brand-tag) jest na każdym slajdzie
+□ Każdy slajd ma page-break-after: always
+□ Format: width: 1080px, height: 1080px w CSS
+─────────────────────────────────────────────────
+Wszystkie □ zaliczone → oddaj plik
+Którykolwiek □ niezaliczony → popraw → sprawdź ponownie
+```
+
+### Walidacja liczbowa (krytyczna)
+
+Po wygenerowaniu HTML policz liczbę `<div class="slide">` i porównaj z `liczba_slajdow`.
+
+Jeśli liczby się nie zgadzają → wygeneruj brakujące slajdy → sprawdź ponownie → dopiero wtedy oddaj plik.
+
+### Tryb Senior Designer
+
+Przed oddaniem pliku zadaj sobie pytanie:
+
+> „Czy użytkownik opublikowałby ten materiał na swoim profilu bez żadnych poprawek?"
+
+Jeśli odpowiedź to „nie" lub „może" — popraw. Oddaj plik dopiero gdy odpowiedź to pewne „tak".
 
 ---
 

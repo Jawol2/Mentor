@@ -191,7 +191,7 @@ Liczba slajdów: [N]
 
 ---
 
-## Zasady jakości
+## Zasady jakości treści
 
 - Każdy slajd musi dać się przeczytać w 3 sekundy
 - Hook musi zawierać liczbę, kontrast lub nieoczekiwane sformułowanie
@@ -199,6 +199,72 @@ Liczba slajdów: [N]
 - Slajdy wartości: konkluzja zawsze na końcu
 - Styl typograficzny: zero ilustracji, zero stockowych grafik — tylko tekst i kolor
 - Branding autora dyskretnie na każdym slajdzie
+
+---
+
+## Kontrola jakości i walidacja artefaktu
+
+Ta sekcja jest **obowiązkowa**. Wykonaj ją przed każdym zwróceniem pliku użytkownikowi.
+
+### Zakaz wersji roboczych
+
+Nigdy nie generuj i nie pokazuj użytkownikowi:
+- placeholderów (`[tu wstaw tekst]`, `lorem ipsum`)
+- HTML z niepełną liczbą slajdów
+- PDF wygenerowanego z prostego tekstu zamiast z HTML karuzeli
+- „wersji demo", „uproszczonej wersji", „szkicu"
+
+Jeśli nie możesz wygenerować finalnego produktu od razu — powiedz o tym wprost i zapytaj co brakuje. Nie pokazuj wersji pośredniej jako wyniku.
+
+### Checklist przed zwróceniem pliku
+
+Po wygenerowaniu HTML wykonaj poniższą walidację. Każdy punkt musi być spełniony. Jeśli nie jest — popraw i wygeneruj ponownie. Nie pokazuj użytkownikowi wyniku dopóki wszystkie punkty nie są zaliczone.
+
+```
+WALIDACJA ARTEFAKTU
+─────────────────────────────────────────────────
+□ Liczba <div class="slide"> w HTML = liczba_slajdow z wymagań
+□ Slajd 1 (hook) istnieje fizycznie w HTML
+□ Ostatni slajd (CTA) istnieje fizycznie w HTML
+□ Każdy slajd ma nagłówek (.headline) — żaden nie jest pusty
+□ CSS zawiera zmienną --brand z kolorem marki użytkownika
+□ Branding autora (.brand-tag) jest na każdym slajdzie
+□ Jeśli wymagane zdjęcie — <img> autora jest na każdym slajdzie
+□ Każdy slajd ma page-break-after: always (podział na strony PDF)
+□ Format slajdu: 1080×1080 px (width: 1080px, height: 1080px w CSS)
+□ HTML nie zawiera <script>, eval(), fetch() ani event handlerów
+─────────────────────────────────────────────────
+WYNIK: wszystkie □ zaliczone → generuj PDF i zwróć plik
+        którykolwiek □ niezaliczony → popraw HTML i sprawdź ponownie
+```
+
+### Walidacja liczbowa (najważniejsza)
+
+Po wygenerowaniu HTML policz dosłownie liczbę `<div class="slide">` w kodzie.
+
+```
+Wymagano: [liczba_slajdow]
+Wygenerowano: [policz div.slide]
+
+Jeśli liczby się nie zgadzają → STOP → wygeneruj brakujące slajdy → sprawdź ponownie
+```
+
+Nigdy nie zwracaj HTML z mniejszą liczbą slajdów niż wymagana.
+
+### Tryb Senior Designer
+
+Przed zwróceniem pliku zadaj sobie pytanie:
+
+> „Czy użytkownik opublikowałby ten materiał na swoim profilu bez żadnych poprawek?"
+
+Jeśli odpowiedź brzmi „nie" lub „może" — popraw. Zwróć plik dopiero gdy odpowiedź to pewne „tak".
+
+Konkretne pytania kontrolne:
+- Czy hook zatrzymałby scroll w ciągu 3 sekund?
+- Czy każdy slajd wartości ma jasną konkluzję na końcu?
+- Czy CTA jest jedno i konkretne?
+- Czy typografia jest czytelna (nagłówek min. 48px, body min. 28px)?
+- Czy branding jest na każdym slajdzie — nie tylko na ostatnim?
 
 ---
 
