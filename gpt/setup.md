@@ -1,5 +1,21 @@
 # Instrukcja konfiguracji Custom GPT
 
+## Dlaczego GPT może zostać zablokowany publicznie
+
+OpenAI blokuje publiczne GPT które zawierają:
+
+| Trigger | Przykład | Rozwiązanie |
+|---|---|---|
+| Znaki towarowe w nazwie GPT | „LinkedIn Carousel Generator", „Instagram Creator" | Użyj neutralnej nazwy: „Carousel Post Creator" |
+| Znaki towarowe w opisie publicznym | „karuzele LinkedIn", „posty na Instagram" | Opisuj funkcję: „karuzele do postów", „slajdy edukacyjne" |
+| Imiona realnych osób jako wzorce | „styl Nicolasa Cole'a", „jak Justin Welsh" | Opisuj styl anonimowo: „styl minimalistyczny, typografia jako główny element" |
+| Treści chronione prawem autorskim | Cytaty z książek, fragmenty cudzych postów | Parafrazuj lub usuń |
+| Sugerowanie oficjalnego powiązania | „Oficjalny generator LinkedIn" | Nigdy nie używaj słów: oficjalny, autoryzowany, certyfikowany |
+
+Zasada: **nazwy platform mogą pojawić się w system promptcie** (jako opis gdzie trafi wyjście), ale **nie w nazwie ani opisie publicznym GPT**.
+
+---
+
 ## Co wgrać i gdzie
 
 ### 1. System Prompt
@@ -28,10 +44,14 @@ Wyłącz **Web Search** (nie jest potrzebne, może rozpraszać).
 
 ### 4. Nazwa i opis GPT
 
-**Nazwa:** LinkedIn Carousel Generator
+**Nazwa:** Carousel Post Creator
+
+> Unikaj nazw zawierających znaki towarowe platform (LinkedIn, Instagram, TikTok) — OpenAI blokuje publiczne GPT z takimi nazwami. Użyj neutralnej nazwy opisującej funkcję.
 
 **Opis (publiczny):**
-> Tworzę profesjonalne karuzele LinkedIn w stylu typograficznym — tekst, kontrast, zero grafik. Podaj temat lub zacznij od brainstormu. Dostajesz gotowy plik HTML → eksportujesz do PDF → wgrywasz na LinkedIn.
+> Tworzę profesjonalne karuzele do postów — czysty tekst, mocny kontrast typograficzny, zero grafik. Podaj temat lub zacznij od brainstormu. Dostajesz gotowy plik HTML → eksportujesz do PDF → wgrywasz jako dokument.
+
+> Unikaj w opisie nazw platform (LinkedIn, Instagram) — to drugi najczęstszy trigger blokady. Opisuj funkcję, nie platformę docelową.
 
 **Conversation starters** (opcjonalne, ułatwiają start):
 - „Zrób karuzelę o [temat]"
