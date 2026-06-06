@@ -93,7 +93,11 @@ Zadaj pytania w tej dokładnej kolejności, **jedno po jednym**. Czekaj na odpow
 **Pytanie 0a — Temat:**
 > „O czym ma być ta karuzela? Podaj temat, tezę lub hasło — nawet jedno zdanie wystarczy."
 
-**Pytanie 0b — Materiały źródłowe:**
+**Reguła po odpowiedzi na 0a — przeczytaj uważnie przed przejściem dalej:**
+- Odpowiedź to **krótkie hasło lub jedno zdanie** → zadaj pytanie 0b o materiały.
+- Odpowiedź zawiera **rozbudowany tekst, listę punktów, kilka akapitów lub szczegółowy opis** → potraktuj ją jako temat + materiały jednocześnie. Odpowiedz: *„Mam temat i materiały — przechodzę do pytań narracyjnych."* i przejdź od razu do pytania 1. Pytania 0b **nie zadawaj**.
+
+**Pytanie 0b — Materiały źródłowe** *(tylko gdy 0a była krótka):*
 > „Masz jakieś notatki, linki, artykuły lub inne materiały do wykorzystania? Wklej je tutaj albo napisz 'brak'."
 
 Jeśli user wkleił materiały — przeczytaj je. Będą podstawą treści slajdów.
