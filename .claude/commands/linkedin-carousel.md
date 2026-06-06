@@ -46,10 +46,18 @@ Jeśli user wkleił materiały — przeczytaj je. Będą podstawą treści slajd
 **Pytanie 4 — Źródło wiarygodności:**
 > „Skąd pochodzi ten content? Własne doświadczenie, model który wypracowałeś, case study, dane?"
 
-Po zebraniu 0a, 0b, 1–4:
-1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
-2. Pokaż propozycję: „Proponuję łuk **[nazwa]**, bo [uzasadnienie]. Pasuje?"
-3. Po akceptacji — zadaj pytanie brandingowe przed generowaniem:
+Po zebraniu odpowiedzi 0a, 0b, 1–4 — wykonaj w tej kolejności:
+
+1. **Dopasuj łuk narracyjny** ze `references/struktura.md` (Reframe / Layers / Journey).
+2. **Pokaż propozycję:** *„Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"* — czekaj na akceptację.
+3. **Po akceptacji łuku — zadaj pytanie brandingowe** (niżej). Czekaj na odpowiedź.
+4. **Po odpowiedzi brandingowej — natychmiast wykonaj pełny Proces (Kroki 1–4).** Nie pytaj o nic więcej.
+
+Mapowanie odpowiedzi z wywiadu na treść karuzeli:
+- pytanie 1 → ton/postrzeganie autora
+- pytanie 2 → główna teza (slajd hook + podsumowanie)
+- pytanie 3 → odbiorca
+- pytanie 4 → źródło wiarygodności w slajdach wartości
 
 **Pytanie brandingowe:**
 > „Ostatni krok — dane do brandingu na slajdach:
@@ -57,20 +65,16 @@ Po zebraniu 0a, 0b, 1–4:
 > - Strona www (opcjonalnie)
 > - LinkedIn lub social media (opcjonalnie)
 > - Kolor marki w hex (domyślnie #0A66C2)
-> - Zdjęcie profilowe — URL lub plik (opcjonalnie)"
+> - Zdjęcie profilowe — URL lub plik (opcjonalnie)
+> - Ile slajdów? (domyślnie 10)"
 
-Po odpowiedzi brandingowej — **natychmiast wykonaj pełny Proces (Kroki 1–4)**. Nie pytaj o nic więcej.
-
-Po zebraniu wszystkich odpowiedzi (0a, 0b, 1–4 + branding):
-1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
-2. Pokaż użytkownikowi: *„Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"*
-3. Po akceptacji użytkownika — **natychmiast wykonaj pełny Proces (Kroki 1–4)** używając odpowiedzi z wywiadu jako treści. Pytanie 2 → teza/hook, pytanie 3 → odbiorca, pytanie 4 → źródło wiarygodności w slajdach wartości.
+Jeśli user pominie część danych — użyj defaultów, nie blokuj generowania.
 
 **KRYTYCZNE:** Nie wypisuj potwierdzenia gotowości pliku dopóki plik faktycznie nie istnieje. Komunikat sukcesu = dowód wykonanej pracy, nie deklaracja zamiaru.
 
 ### Tryb B — Generuj (`/linkedin-carousel generate` lub domyślny)
 
-Przejdź od razu do sekcji **Dane wejściowe** i **Procesu 4-krokowego**.
+Zapytaj kolejno o: **temat**, **materiały źródłowe** (opcjonalnie), **dane brandingowe** (jak w pytaniu brandingowym wyżej). Następnie przejdź do **Procesu 4-krokowego**. Pytania narracyjne 1–4 są w tym trybie opcjonalne — jeśli user chce pominąć, generuj na podstawie tematu i materiałów.
 
 ---
 
@@ -110,6 +114,8 @@ Wygeneruj kompletną specyfikację w JSON:
     "temat": "...",
     "odbiorca": "...",
     "ton": "...",
+    "luk": "Reframe / Layers / Journey / domyślny",
+    "liczba_slajdow": 10,
     "kolor": "...",
     "autor": "..."
   },
@@ -136,7 +142,9 @@ Wygeneruj kompletną specyfikację w JSON:
 
 Wygeneruj **jeden plik HTML** zawierający wszystkie slajdy według przepisu z `references/render.md`.
 
-Plik nazywaj: `karuzela-[slug-tematu].html`
+- **Wygeneruj DOKŁADNIE `liczba_slajdow` bloków `<div class="slide">`** — replikuj blok wartości tyle razy, ile trzeba. Iteruj po tablicy `slajdy`; jeden element = jeden blok.
+- Zachowaj regułę CSS `@page { size: 1080px 1080px }` z szablonu — wymusza kwadratowy format PDF.
+- Plik nazywaj: `karuzela-[slug-tematu].html`
 
 ### Krok 4 — Instrukcja eksportu do PDF
 

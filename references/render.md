@@ -2,7 +2,9 @@
 
 ## Zasada działania
 
-Skill generuje jeden plik `.html` zawierający wszystkie slajdy jako osobne sekcje z `@media print` zoptymalizowane pod PDF. Każdy slajd = jedna strona A4 poziomo (lub kwadrat 1080×1080px przy ustawieniu niestandardowym).
+Skill generuje jeden plik `.html` zawierający wszystkie slajdy jako osobne sekcje. Każdy slajd = jedna strona PDF w formacie **kwadratowym 1080×1080 px** (domyślny format karuzeli LinkedIn). Rozmiar strony jest wymuszony regułą CSS `@page { size: 1080px 1080px }` — dzięki temu PDF zachowuje kwadrat niezależnie od ustawień drukarki.
+
+**KRYTYCZNE — liczba slajdów:** Wygeneruj DOKŁADNIE tyle bloków `<div class="slide">` ile wynosi `liczba_slajdow` (domyślnie 10). Szablon poniżej pokazuje po jednym przykładzie każdego typu slajdu — **blok wartości musisz zreplikować tyle razy, ile potrzeba**, by osiągnąć wymaganą liczbę. Nigdy nie generuj mniej slajdów niż wymagane.
 
 ---
 
@@ -154,9 +156,20 @@ Wstaw poniższy kod jako strukturę pliku. Wypełnij `SLAJDY` na podstawie specy
   .slide.brand .cta-btn { background: #fff; color: var(--brand); }
 
   /* ── Print / PDF ── */
+  /* KLUCZOWE: wymusza kwadratowy rozmiar strony PDF.
+     Bez tej reguły Chrome drukuje A4 i przycina slajdy 1080×1080. */
+  @page {
+    size: 1080px 1080px;
+    margin: 0;
+  }
   @media print {
     html, body { margin: 0; padding: 0; background: white; }
-    .slide { page-break-after: always; break-after: page; }
+    .slide {
+      page-break-after: always;
+      break-after: page;
+      width: 1080px;
+      height: 1080px;
+    }
     .slide:last-child { page-break-after: avoid; break-after: avoid; }
   }
 
@@ -187,7 +200,9 @@ Wstaw poniższy kod jako strukturę pliku. Wypełnij `SLAJDY` na podstawie specy
   <div class="divider"></div>
   <h1 class="headline xl">{{NAGLOWEK_1}}</h1>
   <p class="body">{{BODY_1}}</p>
-  <div class="big-num">{{LICZBA_SLAJDOW}}</div>
+  <!-- big-num: TYLKO dla hooków liczbowych. Wstaw liczbę z hooka (np. „7 błędów" → 7).
+       Jeśli hook nie jest liczbowy — usuń ten cały <div class="big-num">. -->
+  <div class="big-num">{{LICZBA_HOOKA}}</div>
   <span class="brand-tag">{{AUTOR}}</span>
 </div>
 
@@ -260,8 +275,11 @@ Przy generowaniu pliku HTML ze specyfikacji JSON zastosuj to mapowanie:
 | `meta.temat` | `{{TEMAT}}` |
 | `meta.autor` | `{{AUTOR}}` |
 | `slajdy.length` | `{{TOTAL}}` |
-| `slajdy[i].naglowek` | `{{NAGLOWEK_N}}` |
-| `slajdy[i].body[0..2]` | `{{PUNKT_X}}`, `{{PUNKT_Y}}`, `{{KONKLUZJA}}` |
+| `slajdy[i].naglowek` | nagłówek slajdu i (placeholdery `{{NAGLOWEK_N}}` są przykładowe — wstawiaj treść dynamicznie dla każdego z N slajdów) |
+| `slajdy[i].body[0..2]` | punkty body slajdu i |
+| liczba z hooka liczbowego (np. 7) | `{{LICZBA_HOOKA}}` — opcjonalna, tylko slajd 1 |
+
+> **Uwaga o placeholderach:** Numerowane placeholdery (`{{NAGLOWEK_1}}`, `{{NAGLOWEK_2}}`…) w szablonie są wyłącznie przykładem czytelności. Przy generowaniu nie trzymaj się ich numeracji — iteruj po tablicy `slajdy` z JSON i dla każdego elementu wstaw jego `naglowek` i `body`. Liczba wygenerowanych bloków `.slide` musi równać się `liczba_slajdow`.
 
 **Typ tła per typ slajdu:**
 
@@ -280,13 +298,15 @@ Przy generowaniu pliku HTML ze specyfikacji JSON zastosuj to mapowanie:
 
 ### Metoda A: Drukowanie w przeglądarce (zero instalacji)
 
+Dzięki regule `@page { size: 1080px 1080px }` w CSS, przeglądarka sama ustawia kwadratowy format — nie musisz wybierać rozmiaru papieru ręcznie.
+
 1. Otwórz plik w **Chrome** lub **Edge** (inne przeglądarki mogą obcinać marginesy)
 2. `Ctrl+P` (Windows) lub `Cmd+P` (Mac)
 3. Ustaw:
    - **Drukarka:** Zapisz jako PDF / Save as PDF
-   - **Rozmiar papieru:** Niestandardowy → `1080 × 1080 px` lub A4 poziomo
-   - **Marginesy:** Brak / None
+   - **Marginesy:** Brak / None (jeśli dostępne — `@page` i tak wymusza 0)
    - **Tło graficzne:** ✓ włączone (Więcej ustawień → Grafika tła)
+   - **Rozmiar papieru:** zostaw domyślny — CSS `@page` wymusza 1080×1080
 4. Kliknij **Zapisz**
 
 ### Metoda B: Python + WeasyPrint (linia poleceń)
