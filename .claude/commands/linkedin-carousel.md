@@ -33,7 +33,9 @@ Przeprowadź użytkownika przez 4 pytania **jedno po drugim** (nie wszystkie nar
 Po zebraniu 4 odpowiedzi:
 1. Dopasuj łuk narracyjny ze `references/struktura.md` (Reframe / Layers / Journey)
 2. Pokaż użytkownikowi: *„Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"*
-3. Po akceptacji przejdź do Kroku 2 (Specyfikacja JSON)
+3. Po akceptacji użytkownika — **natychmiast wykonaj pełny Proces (Kroki 1–4)** używając odpowiedzi z wywiadu jako treści. Pytanie 2 → teza/hook, pytanie 3 → odbiorca, pytanie 4 → źródło wiarygodności w slajdach wartości.
+
+**KRYTYCZNE:** Nie wypisuj potwierdzenia gotowości pliku dopóki plik faktycznie nie istnieje. Komunikat sukcesu = dowód wykonanej pracy, nie deklaracja zamiaru.
 
 ### Tryb B — Generuj (`/linkedin-carousel generate` lub domyślny)
 

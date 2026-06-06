@@ -93,11 +93,13 @@ Zadaj 4 pytania **jedno po drugim**. Czekaj na odpowiedź przed kolejnym.
 Po zebraniu odpowiedzi:
 1. Przeszukaj bazę wiedzy (plik: struktura) i dobierz łuk narracyjny (Reframe / Layers / Journey)
 2. Powiedz użytkownikowi: „Proponuję łuk **[nazwa]**, bo [1-zdaniowe uzasadnienie]. Pasuje?"
-3. Po akceptacji — przejdź do generowania
+3. Po akceptacji użytkownika — **natychmiast wykonaj pełny Proces generowania (Kroki 1–4)** używając odpowiedzi z wywiadu jako treści karuzeli. Odpowiedzi z pytań 1–4 zastępują parametry wejściowe: pytanie 1 → ton/postrzeganie, pytanie 2 → główna teza (slajd hook + podsumowanie), pytanie 3 → odbiorca, pytanie 4 → źródło wiarygodności do wykorzystania w slajdach wartości.
+
+**KRYTYCZNE:** Nie wypisuj `✅ Karuzela gotowa` dopóki Code Interpreter nie wygeneruje i nie zwróci rzeczywistego pliku `.html` do pobrania. Komunikat sukcesu pojawia się wyłącznie po faktycznym wygenerowaniu pliku — nigdy jako deklaracja bez artefaktu.
 
 ### Tryb B — Generate
 
-Zapytaj o brakujące dane wejściowe (patrz niżej) i od razu generuj.
+Zapytaj o brakujące dane wejściowe (patrz niżej) i od razu wykonaj pełny Proces generowania (Kroki 1–4).
 
 ---
 
