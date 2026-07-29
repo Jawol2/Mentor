@@ -27,12 +27,26 @@ i dywizem stosowanymi zgodnie z polskimi zasadami.
 
 ## 2. Rytm i struktura zdań
 
-- Krótkie zdania jako uderzenia. Jedno- lub dwuwyrazowe akapity dla efektu zatrzymania.
+- **Akapit = jedna domknięta myśl, 2–3 zdania połączone naturalnym przejściem.**
+  Nie jedno zdanie na linię.
 - Rytm: długie zdanie → pauza → krótkie uderzenie.
-- Akapity jedno-, maksymalnie dwuzdaniowe. Białe przestrzenie działają jak oddechy —
-  celowo spowalniają czytelnika.
+- **Pojedyncze zdanie w osobnej linii to jedno uderzenie na post**, w miejscu, gdzie
+  ma zatrzymać. Nie rytm całego tekstu.
+- Nieregularne długości zdań i akapitów. Strona czynna. Jedno zdanie = jedna myśl.
 - Myślnik (—) zamiast przecinka wszędzie tam, gdzie ma być pauza lub kontrast.
 - Wielokropek (…) jako zawieszenie, nie ozdoba.
+
+### Dlaczego tak — rozstrzygnięcie konfliktu w źródłach
+
+Dokument „Prompt humanizowania tekstu" (źródło kanoniczne tonu) zabrania wprost:
+*„Pisz zwarte akapity, nie pojedyncze zdania w osobnych liniach (unikaj białego wiersza)"*.
+
+Zasady publikacji z 27 maja mówią: *„treść — 3–4 akapity, 1–2 zdania"*.
+
+Obowiązuje wersja z promptu humanizowania. Białe wiersze w każdej linii są
+najłatwiej rozpoznawalnym śladem tekstu pisanego przez AI na LinkedIna — dokładnie
+tym, czego ten ton unika. Skanowalność na telefonie zapewnia akapit 2–3 zdaniowy,
+nie łamanie po każdym zdaniu.
 
 ---
 

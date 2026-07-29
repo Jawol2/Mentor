@@ -9,6 +9,7 @@ na Dysku Google. Poniżej mapa: co skąd pochodzi i gdzie szukać oryginału.
 
 | Dokument | Co z niego wzięto | Trafiło do |
 |---|---|---|
+| **Prompt humanizowania tekstu** (Dysk, mod. III 2026) | **Źródło kanoniczne tonu.** Struktura akapitów, lista słów-sygnalizatorów AI, konstrukcje zabronione, mikro-zasady, ludzkie cechy. To dokument, do którego odsyła brief audytowy słowami „ton i styl będzie zaczytany z innego skilla" | `ton-i-styl.md` (sekcje 2, 5, 6) |
 | **linkedin-audit-brief-jacek.md** | Estetyka „na brudno", model trwałości, BREW360, ICP i anty-ICP, keywords, Market Exhaustion, szatkowanie treści, zakaz kwot | `ton-i-styl.md`, `strategia-brew360.md`, SKILL.md (etap 1) |
 | **„Posty 360°" — struktura tworzenia treści** | Model 8 perspektyw, zastosowania, hasła otwierające | `modele-pisania.md` |
 | **NOWE 27 maj — ZASADY PUBLIKACJI, 16 postów LinkedIn (autonomiczne)** | Format hak → credibility → treść → CTA, zasada autonomii posta, rytm publikacji, linki w pierwszym komentarzu, odpowiedzi w 2h | `modele-pisania.md`, `strategia-brew360.md` |
@@ -43,8 +44,22 @@ o który dorobek chodzi.
 
 **Ton w briefie audytowym.** Brief zawiera wprost instrukcję, że ton i styl mają być
 wczytane z osobnego źródła, a sam brief ma się ograniczyć do pozycjonowania i BREW360.
-Ten skill to realizuje: `strategia-brew360.md` odpowiada za pozycjonowanie,
-`ton-i-styl.md` za głos.
+Tym osobnym źródłem jest dokument „Prompt humanizowania tekstu". Ten skill to realizuje:
+`strategia-brew360.md` odpowiada za pozycjonowanie, `ton-i-styl.md` za głos.
+
+**Akapity: białe wiersze kontra zwarte akapity.** Zasady z 27 maja przewidują akapity
+1–2 zdaniowe, prompt humanizowania zabrania pojedynczych zdań w osobnych liniach.
+**Obowiązuje prompt humanizowania** — jako źródło kanoniczne tonu i jako nowsza decyzja.
+Akapit ma 2–3 zdania z przejściem; pojedyncze zdanie w linii zostaje jako jedno uderzenie
+na post. Uzasadnienie w `ton-i-styl.md`, sekcja 2.
+
+**Ogólne poradniki personal brandingu.** Nie są źródłem dla tego skilla. Sprawdzono
+typowy zestaw takich zasad (mocny hak, jedna grupa odbiorców, keywords, 80/20
+wartość-osobowość) — pokrywa się z materiałami własnymi, ale wprowadza dwie sprzeczności:
+zachęca do podawania liczb finansowych (zakaz) i do zamykania posta pytaniem typu
+„Jak u Ciebie to działa?" (forma z listy zakazanych). Poradniki nie zawierają
+inwentaryzacji porażek, market exhaustion ani odpychania niewłaściwych odbiorców —
+czyli tego, co odróżnia te posty od średniej LinkedIna. Materiały własne mają pierwszeństwo.
 
 ---
 
