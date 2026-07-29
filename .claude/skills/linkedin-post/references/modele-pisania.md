@@ -9,9 +9,20 @@ Struktura, która działa w 90% przypadków:
 ```
 HAK               → 1 zdanie, działa bez kontekstu
 CREDIBILITY       → 1 zdanie wplecione w treść, nie w podpis
-TREŚĆ             → 3–4 akapity po 1–2 zdania
+TREŚĆ             → 2–3 akapity, każdy 2–3 zdania z przejściem
+DOWÓD             → 1–2 zdania: konkretny przypadek albo obserwacja z praktyki
 CTA               → 1 zdanie albo świadomie brak
 ```
+
+**Credibility to nie dowód.** Credibility mówi, kim jesteś („pracuję z tym od 11 lat").
+Dowód mówi, że to działa u kogoś innego niż Ty — jeden przypadek, jedna liczba,
+jedno zdanie klienta. Post z credibility, ale bez dowodu, jest tezą podpartą wyłącznie
+Twoim autorytetem. U odbiorcy, który już próbował i któremu nie wyszło, to uruchamia
+sceptycyzm zamiast zainteresowania.
+
+Jeśli dowodu nie masz — nie wymyślaj go. Napisz post bez niego i zanotuj, jakiego
+przypadku brakuje. Brak dowodu w całej serii to sygnał, że najpierw trzeba zebrać
+przypadki, a nie pisać dalej.
 
 **Zasada autonomii:** każdy post działa samodzielnie. Odbiorca może go zobaczyć jako
 pierwszy i jedyny. Dlatego zawiera:
