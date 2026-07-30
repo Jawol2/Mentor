@@ -42,6 +42,11 @@ nie pytaj ponownie, tylko potwierdź jednym zdaniem i działaj.
 3. **Jeden post czy seria?** Seria = wybierz model porządkujący (Posty 360° albo SCAMPER),
    pojedynczy post = od razu format.
 
+4. **Dokąd prowadzi ten post?** Nazwij następny krok czytelnika, zanim napiszesz pierwsze
+   zdanie: komentarz, wiadomość, zapis na listę, konkretna strona. „Zbudowanie świadomości"
+   nie jest następnym krokiem. Jeśli między postem a ofertą nie ma żadnego etapu
+   pośredniego — powiedz to od razu, zamiast odkrywać na końcu.
+
 ---
 
 ## ETAP 1 — TEMAT
@@ -77,6 +82,25 @@ jedną konkretną rzecz — jeden błąd, jedną obserwację, jedną czerwoną f
 jeden konkretny przykład. Pokaż to i idź dalej (nie czekaj na akceptację, chyba że użytkownik
 podał kilka kierunków do wyboru).
 
+### Jeśli to seria — plan przed tekstami
+
+Seria to nie zbiór postów o jednym temacie. Ma trzy właściwości, których pojedynczy post
+nie ma, i wszystkie trzy ustalasz **zanim** napiszesz pierwszy draft.
+
+1. **Gdzie stoi dowód.** Który post niesie konkretny przypadek — kto, co zrobił, co z tego
+   wyszło. Jeśli w planie nie ma ani jednego, zatrzymaj się i powiedz to wprost. Seria bez
+   dowodu to ta sama teza powtórzona siedem razy, tylko z innej strony.
+2. **Gdzie jest oferta.** Który post nazywa, co konkretnie robisz i co czytelnik może dostać.
+   Seria, która wyłącznie diagnozuje problem, kończy się dyskusją w komentarzach zamiast
+   zapytaniami.
+3. **Co robi każdy post w ciągu.** Jedno zdanie na post: stawia problem, daje dowód, odcina
+   niewłaściwych odbiorców czy prowadzi do działania.
+
+**Bramka — nie pomijaj jej.** Pokaż plan serii jako listę i dopiero wtedy pisz teksty.
+Jeśli w planie brakuje dowodu albo oferty, napraw plan. Napisanie siedmiu postów po to,
+żeby dowiedzieć się tego na etapie 3, to siedem razy zmarnowana praca — i tak właśnie
+wygląda najczęstsza awaria tego pipeline'u.
+
 ---
 
 ## ETAP 2 — DRAFT
@@ -106,7 +130,20 @@ Zasady twarde na tym etapie:
 - CTA jedno albo żadne. Post bez CTA jest dozwolony i czasem lepszy.
 - Link **nigdy** w treści — zawsze do pierwszego komentarza.
 
-### 2.3 Podaj obudowę
+### 2.3 Fakty i placeholdery
+
+**Fakty biograficzne.** Podawaj tylko liczby i daty, które masz potwierdzone. Gdy źródła
+podają rozbieżne wartości — różne roczniki startu, różne liczby absolwentów — użyj
+sformułowania odpornego na rozjazd („od dekady", „od 2016") i zgłoś rozbieżność poza
+tekstem posta. Nigdy nie wybieraj wersji wygodniejszej dla tezy.
+
+**Placeholdery.** Gdy post wymaga konkretu, którego nie masz, nie wymyślaj go ani nie
+pomijaj po cichu. Wstaw w tekście `[DOWÓD — WSTAW: co dokładnie ma tu być]`, a pod postem
+wypisz wszystkie placeholdery jako listę do uzupełnienia. Post z jawną luką jest użyteczny.
+Post z wymyślonym case study jest szkodliwy — i wychodzi na jaw przy pierwszym pytaniu
+w komentarzach.
+
+### 2.4 Podaj obudowę
 
 Do każdego posta dołącz:
 - **Pierwszy komentarz** (jeśli jest link) — gotowy tekst.
@@ -123,7 +160,21 @@ w środku bloku.
 
 **Cel:** złapać to, co zabija post, zanim zrobi to rynek.
 
-### 3.1 Checklista własna (przejdź ją zawsze, wynik podaj skrótowo)
+### 3.1 Przemiatanie wzorców — mechanicznie, nie z pamięci
+
+Lista zakazów w `ton-i-styl.md` nie wystarcza, bo zakazane konstrukcje brzmią naturalnie
+w trakcie pisania i przechodzą przez samokontrolę. Dlatego po napisaniu wracasz do tekstu
+i szukasz **konkretnych kształtów**, a nie ogólnego wrażenia:
+
+1. Każde zdanie z dwoma przecinkami — czy to wyliczenie trzech rzeczy? Zetnij do dwóch.
+2. Każde „nie …, …" — czy to konstrukcja „to nie X, to Y"? Przepisz na zdanie twierdzące.
+3. Policz akapity jednozdaniowe. Więcej niż jeden na post to rytm generatora.
+4. Przeszukaj tekst po liście słów-sygnalizatorów z `ton-i-styl.md`, sekcja 6.
+5. Każde pytanie — czy naprawdę czekasz na odpowiedź? Jeśli nie, usuń.
+
+Ten przebieg robisz **zawsze**, także gdy tekst „brzmi dobrze". Zwłaszcza wtedy.
+
+### 3.2 Checklista własna (przejdź ją zawsze, wynik podaj skrótowo)
 
 Hak i wejście:
 - [ ] Pierwsze zdanie zatrzymuje bez kontekstu?
@@ -144,15 +195,19 @@ Domknięcie:
 - [ ] CTA jedno i jednoznaczne — albo świadomie żadne?
 - [ ] Link poza treścią?
 
-### 3.2 Adwokat Diabła (dla postów sprzedażowych — obowiązkowo)
+### 3.3 Adwokat Diabła (dla postów sprzedażowych — obowiązkowo)
 
 Jeśli post ma cokolwiek sprzedawać (program, rozmowę, zapis, lead magnet), przepuść go
 przez skill **`adwokat-diabla`**, protokół **TEKST**. Nie streszczaj go — wywołaj i pokaż
 wynik. Potem napraw **jeden** priorytet, który wskaże, i pokaż wersję po poprawce.
 
-Dla postów czysto edukacyjnych i obserwacyjnych — wystarczy checklista 3.1.
+Dla postów czysto edukacyjnych i obserwacyjnych — wystarczą kroki 3.1 i 3.2.
 
-### 3.3 Wersja finalna
+**Przy serii wywołaj go dwa razy.** Pierwszy raz na planie z etapu 1 — wtedy poprawka
+kosztuje jedną listę. Drugi raz na najmocniejszym poście sprzedażowym. Jeśli wywołasz go
+dopiero na końcu, dostaniesz diagnozę wad planu, gdy teksty są już napisane.
+
+### 3.4 Wersja finalna
 
 Pokaż post po poprawkach w jednym bloku. Wypisz w 2–3 punktach, co zmieniłeś i dlaczego.
 Nie pokazuj trzech wariantów do wyboru — wybierz najlepszy i uzasadnij.

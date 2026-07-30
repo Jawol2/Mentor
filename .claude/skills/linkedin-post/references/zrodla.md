@@ -63,6 +63,21 @@ czyli tego, co odróżnia te posty od średniej LinkedIna. Materiały własne ma
 
 ---
 
+## Usterki wykryte podczas używania pipeline'u
+
+Zapis awarii z realnych przebiegów. Każda z nich jest już naprawiona w SKILL.md — lista
+istnieje po to, żeby nie wracały przy kolejnych zmianach.
+
+| Awaria | Gdzie się wyłożyło | Naprawa |
+|---|---|---|
+| Krytyka po siedmiu gotowych tekstach wykryła wady **planu serii** (brak dowodu, brak oferty) | Etap 3 przychodził za późno | Bramka planu serii w etapie 1 + wywołanie adwokata diabła na planie, nie tylko na tekście |
+| Wymienianki po trzy przeszły przez samokontrolę mimo listy zakazów | Checkbox „zero wymienianek?" nie łapie własnych błędów | Krok 3.1 — przemiatanie po konkretnych kształtach, nie po wrażeniu |
+| Konwencja oznaczania brakującego konkretu wymyślana w locie | Brak reguły dla placeholderów | Krok 2.3 — format `[DOWÓD — WSTAW: …]` plus lista pod postem |
+| Rozjazd dat i liczb w źródłach zgłaszany ręcznie za każdym razem | Brak reguły dla faktów biograficznych | Krok 2.3 — sformułowania odporne na rozjazd, zgłoszenie poza tekstem |
+| Dziura w lejku (nic między postem a ofertą) wykryta dopiero przez adwokata diabła | Nikt nie kazał nazwać następnego kroku | Krok 0, punkt 4 — następny krok czytelnika przed pierwszym zdaniem |
+
+---
+
 ## Czego w źródłach nie było
 
 Braki, które trzeba uzupełnić przy okazji:
